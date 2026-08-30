@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GeoBench</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/png" href="icon.png">
+</head>
+<body>
+
+    <div class="card">
+        <h2><b>Accuracy</b></h2>
+        <div class="accuracy-display"><span id="accValue">--</span><span class="unit">m</span></div>
+        
+        <!-- Grid for extended GNSS metrics -->
+        <div class="metrics-grid">
+            <div><span class="metric-label">Lat:</span> <span id="latValue" class="metric-value">--</span></div>
+            <div><span class="metric-label">Lng:</span> <span id="lngValue" class="metric-value">--</span></div>
+            <div><span class="metric-label">Altitude:</span> <span id="altValue" class="metric-value">--</span></div>
+            <div><span class="metric-label">Alt Acc:</span> <span id="altAccValue" class="metric-value">--</span></div>
+            <div><span class="metric-label">Speed:</span> <span id="speedValue" class="metric-value">--</span></div>
+            <div><span class="metric-label">Drift Δ:</span> <span id="driftValue" class="metric-value">--</span></div>
+            <div><span class="metric-label">TTFF:</span> <span id="ttffValue" class="metric-value">--</span></div>
+            <div><span class="metric-label">Update Δ:</span> <span id="deltaValue" class="metric-value">--</span></div>
+        </div>
+
+        <div>Data points: <span id="countDisplay" class="count-highlight">0</span></div>
+    </div>
+
+    <div class="controls-container">
+        <button id="recordBtn">Start Recording</button>
+        <button id="exportBtn">Export CSV</button>
+        <button id="lockBtn">Lock Screen (OLED Dark)</button>
+    </div>
+
+    <!-- Black Overlay -->
+    <div id="lockOverlay">
+        <div class="slider-container">
+            <p>Slide all the way right to unlock</p>
+            <input type="range" id="unlockSlider" min="0" max="100" value="0">
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
