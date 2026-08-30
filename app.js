@@ -198,12 +198,20 @@ exportBtn.addEventListener('click', () => {
 // Fake Lock Screen Handlers
 lockScreenBtn.addEventListener('click', () => {
     touchLockOverlay.style.display = 'flex';
-    unlockSlider.value = 0;
+    unlockSlider.value = 0; // Reset slider position
 });
 
+// Continuously check the slider value as the user drags it
 unlockSlider.addEventListener('input', (e) => {
-    if (e.target.value >= 95) {
-        touchLockOverlay.style.display = 'none';
+    if (e.target.value >= 95) { // If dragged 95% of the way to the right
+        touchLockOverlay.style.display = 'none'; // Hide overlay
+        e.target.value = 0; // Reset for next time
+    }
+});
+
+																				  
+unlockSlider.addEventListener('change', (e) => {
+    if (e.target.value < 95) {
         e.target.value = 0;
     }
 });
