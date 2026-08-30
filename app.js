@@ -10,6 +10,7 @@ let lastTimestamp = null;
 
 // DOM Elements
 const accValue = document.getElementById('accValue');
+const accValueLocked = document.getElementById('lockaccValueDisplay');
 const latValue = document.getElementById('latValue');
 const lngValue = document.getElementById('lngValue');
 const altValue = document.getElementById('altValue');
@@ -22,8 +23,8 @@ const countDisplay = document.getElementById('countDisplay');
 
 const recordBtn = document.getElementById('recordBtn');
 const exportBtn = document.getElementById('exportBtn');
-const lockBtn = document.getElementById('lockBtn');
-const lockOverlay = document.getElementById('lockOverlay');
+const lockScreenBtn = document.getElementById('lockScreenBtn');
+const touchLockOverlay = document.getElementById('touchLockOverlay');
 const unlockSlider = document.getElementById('unlockSlider');
 
 // Haversine formula for static drift
@@ -74,6 +75,7 @@ function startRecording() {
     deltaValue.innerText = "--";
     driftValue.innerText = "--";
     accValue.innerText = "--";
+	accValueLocked.innerText = "--";
 
     requestWakeLock();
 
@@ -116,12 +118,13 @@ function startRecording() {
             }
 
             // Safely handle values that might be null on some hardware
-            const altSafe = altitude !== null ? altitude.toFixed(1) : "N/A";
-            const altAccSafe = altitudeAccuracy !== null ? altitudeAccuracy.toFixed(1) : "N/A";
-            const speedSafe = speed !== null ? speed.toFixed(2) : "N/A";
+            const altSafe = typeof altitude === 'number' ? altitude.toFixed(1) : "N/A";
+			const altAccSafe = typeof altitudeAccuracy === 'number' ? altitudeAccuracy.toFixed(1) : "N/A";
+			const speedSafe = typeof speed === 'number' ? speed.toFixed(2) : "N/A";
 
             // Update UI
             accValue.innerText = accuracy.toFixed(0);
+			accValueLocked.innerText = accuracy.toFixed(0);
             latValue.innerText = latitude.toFixed(6);
             lngValue.innerText = longitude.toFixed(6);
             altValue.innerText = altSafe;
@@ -139,6 +142,7 @@ function startRecording() {
         (error) => {
             console.warn(`ERROR(${error.code}): ${error.message}`);
             accValue.innerText = "ERR";
+			accValueLocked.innerText = "ERR";
         },
         options
     );
@@ -192,14 +196,14 @@ exportBtn.addEventListener('click', () => {
 });
 
 // Fake Lock Screen Handlers
-lockBtn.addEventListener('click', () => {
-    lockOverlay.style.display = 'flex';
+lockScreenBtn.addEventListener('click', () => {
+    touchLockOverlay.style.display = 'flex';
     unlockSlider.value = 0;
 });
 
 unlockSlider.addEventListener('input', (e) => {
     if (e.target.value >= 95) {
-        lockOverlay.style.display = 'none';
+        touchLockOverlay.style.display = 'none';
         e.target.value = 0;
     }
 });
