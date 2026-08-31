@@ -122,15 +122,20 @@ function startRecording() {
 			const altAccSafe = typeof altitudeAccuracy === 'number' ? altitudeAccuracy.toFixed(1) : "N/A";
 			const speedSafe = typeof speed === 'number' ? speed.toFixed(2) : "N/A";
 
-            // Update UI
-            accValue.innerText = accuracy.toFixed(0);
-			accValueLocked.innerText = accuracy.toFixed(0);
-            latValue.innerText = latitude.toFixed(6);
-            lngValue.innerText = longitude.toFixed(6);
-            altValue.innerText = altSafe;
-            altAccValue.innerText = altAccSafe;
-            speedValue.innerText = speedSafe;
-            countDisplay.innerText = dataPoints.length + 1;
+			const isLocked = touchLockOverlay.style.display === 'flex';
+
+			if (isLocked) {
+				accValueLocked.innerText = `${accuracy.toFixed(0)} m`;
+			}
+			else {
+				accValue.innerText = accuracy.toFixed(0);
+            	latValue.innerText = latitude.toFixed(6);
+            	lngValue.innerText = longitude.toFixed(6);
+            	altValue.innerText = altSafe;
+            	altAccValue.innerText = altAccSafe;
+            	speedValue.innerText = speedSafe;
+            	countDisplay.innerText = dataPoints.length + 1;
+			}
 
             // Log Data
             dataPoints.push({
