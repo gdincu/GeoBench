@@ -2,6 +2,10 @@
 
 A lightweight, mobile-first Progressive Web App (PWA) designed to test, benchmark, and compare GNSS (Global Navigation Satellite System) location accuracy across different smartphone models.
 
+<img width="303.75" height="675" alt="input1" src="https://github.com/user-attachments/assets/f2a28d2b-4a88-4ae4-9cde-2d1b13afbb9f" />
+<img width="303.75" height="675" alt="input2" src="https://github.com/user-attachments/assets/42587421-a446-436c-81f4-1d0473bc6fb3" />
+<img width="303.75" height="675" alt="input3" src="https://github.com/user-attachments/assets/cdbc9eba-3617-4293-9473-8e5389258b46" />
+
 ## Features
 
 - **Real-Time GNSS Metrics:** Tracks accuracy (meters), latitude, longitude, altitude, altitude accuracy, speed, and update intervals.
@@ -12,8 +16,6 @@ A lightweight, mobile-first Progressive Web App (PWA) designed to test, benchmar
 - **Screen Wake Lock API:** Actively prevents your phone's physical screen from going to sleep during active recording sessions.
 - **CSV Data Export:** Exports full performance datasets for post-analysis across different environments and device models.
 - **Offline-Ready PWA:** Works seamlessly in remote testing zones via an integrated Service Worker and Web Manifest.
-
----
 
 ## How to Use
 
