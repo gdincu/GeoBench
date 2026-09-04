@@ -21,4 +21,4 @@ A lightweight, mobile-first Progressive Web App (PWA) designed to test, benchmar
 2. Monitor real-time accuracy and performance telemetry on the dashboard.
 3. Tap **Lock Screen** when testing in the field to hide the UI behind a black overlay.
 4. **To Unlock:** Slide the unlock slider all the way to the right (letting go early will snap it back).
-5. Tap **Stop Recording** when finished, then click **Export CSV** to download your session log.
+5. Tap **Stop Recording** when finished, then click **Export CSV** to download your session log. 
