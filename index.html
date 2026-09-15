@@ -2,28 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="GeoBench: log and benchmark GNSS location accuracy on your phone.">
+    <meta name="theme-color" content="#121212">
     <title>GeoBench</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
-	<link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 </head>
 <body>
 
     <div class="card">
-        <h2><b>Accuracy</b></h2>
+        <h2>Accuracy</h2>
         <div class="accuracy-display"><span id="accValue">--</span><span class="unit">m</span></div>
-        
+
         <!-- Grid for extended GNSS metrics -->
         <div class="metrics-grid">
-            <div><span class="metric-label">Lat:</span> <span id="latValue" class="metric-value">--</span></div>
-            <div><span class="metric-label">Lng:</span> <span id="lngValue" class="metric-value">--</span></div>
-            <div><span class="metric-label">Altitude:</span> <span id="altValue" class="metric-value">--</span></div>
-            <div><span class="metric-label">Alt Acc:</span> <span id="altAccValue" class="metric-value">--</span></div>
-            <div><span class="metric-label">Speed:</span> <span id="speedValue" class="metric-value">--</span></div>
-            <div><span class="metric-label">Drift Δ:</span> <span id="driftValue" class="metric-value">--</span></div>
-            <div><span class="metric-label">TTFF:</span> <span id="ttffValue" class="metric-value">--</span></div>
-            <div><span class="metric-label">Update Δ:</span> <span id="deltaValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">Lat:</span> <span id="latValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">Lng:</span> <span id="lngValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">Altitude:</span> <span id="altValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">Alt Acc:</span> <span id="altAccValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">Speed:</span> <span id="speedValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">Drift Δ:</span> <span id="driftValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">TTFF:</span> <span id="ttffValue" class="metric-value">--</span></div>
+            <div class="metric"><span class="metric-label">Update Δ:</span> <span id="deltaValue" class="metric-value">--</span></div>
         </div>
 
         <div>Data points: <span id="countDisplay" class="count-highlight">0</span></div>
@@ -31,36 +35,18 @@
 
     <div class="controls-container">
         <button id="recordBtn">Start Recording</button>
-        <button id="exportBtn">Export CSV</button>
+        <button id="exportBtn" hidden>Export CSV</button>
     </div>
-	
-	<button id="lockScreenBtn" style="
-        position: fixed; 
-        bottom: 20px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        width: 90%; 
-        max-width: 400px; 
-        padding: 15px; 
-        border: none; 
-        border-radius: 8px; 
-        font-weight: bold; 
-        font-size: 16px; 
-        cursor: pointer; 
-        background-color: #ff9800; 
-        color: white; 
-        z-index: 1000; 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-        Lock Screen
-    </button>
-    
+
+    <button id="lockScreenBtn">Lock Screen</button>
+
     <div id="touchLockOverlay" class="touch-lock-overlay">
-        <div style="font-size: 64px; font-weight: bold; margin-bottom: 5px;" id="lockaccValueDisplay">-- m</div>
-        <div style="font-size: 14px; margin-bottom: 40px; color: #aaa;">Screen Locked</div>
-        <input type="range" id="unlockSlider" min="0" max="100" value="0" class="unlock-slider">
-        <div style="margin-top: 10px; font-size: 14px; color: #ccc;">Slide right to unlock</div>
+        <div class="lock-accuracy" id="lockaccValueDisplay">-- m</div>
+        <div class="lock-subtext">Screen Locked</div>
+        <input type="range" id="unlockSlider" min="0" max="100" value="0" class="unlock-slider" aria-label="Slide right to unlock">
+        <div class="lock-hint">Slide right to unlock</div>
     </div>
-	
-	<script src="app.js"></script>
+
+    <script src="js/app.js"></script>
 </body>
 </html>

@@ -11,8 +11,8 @@ A lightweight, mobile-first Progressive Web App (PWA) designed to test, benchmar
 - **Advanced Benchmarks:**
   - **TTFF (Time To First Fix):** Measures how quickly the device acquires an initial position lock.
   - **Static Drift (Δ):** Calculates position jitter using the Haversine formula while the device is stationary.
-- **Lock Screen:** Bypasses mobile OS throttling by keeping the GPS loop active while covering the screen in pitch-black pixels to prevent accidental touches and save battery.
-- **Screen Wake Lock API:** Actively prevents your phone's physical screen from going to sleep during active recording sessions.
+- **Lock Screen:** Covers the UI with near-black pixels to prevent accidental touches and reduce OLED power draw while the GPS loop keeps running (does not turn the screen off by itself).
+- **Screen Wake Lock API:** Actively prevents the phone's screen from going to sleep (and GPS from being suspended) during active recording sessions. Re-acquired automatically when the page becomes visible again.
 - **CSV Data Export:** Exports full performance datasets for post-analysis across different environments and device models.
 - **Offline-Ready PWA:** Works seamlessly in remote testing zones via an integrated Service Worker and Web Manifest.
 
